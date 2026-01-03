@@ -4,7 +4,6 @@
 
 import {
   DynamoDBClient,
-  CreateTableCommand,
   DescribeTableCommand,
   ResourceNotFoundException,
 } from '@aws-sdk/client-dynamodb';

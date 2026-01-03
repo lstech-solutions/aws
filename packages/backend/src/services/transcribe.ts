@@ -52,13 +52,16 @@ export class TranscribeService {
    */
   async startTranscriptionJob(params: TranscriptionJobParams): Promise<string> {
     try {
+      const mediaFormat = params.mediaFormat || this.detectMediaFormat(params.audioS3Uri);
+      const languageCode = params.languageCode || 'en-US';
+      
       const command = new StartTranscriptionJobCommand({
         TranscriptionJobName: params.jobName,
         Media: {
           MediaFileUri: params.audioS3Uri,
         },
-        MediaFormat: params.mediaFormat || this.detectMediaFormat(params.audioS3Uri),
-        LanguageCode: params.languageCode || 'en-US',
+        MediaFormat: mediaFormat as any,
+        LanguageCode: languageCode as any,
         OutputBucketName: config.s3.bucketName,
         OutputKey: this.extractS3KeyFromUri(params.outputS3Uri),
         Settings: {

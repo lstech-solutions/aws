@@ -281,6 +281,7 @@ function createErrorResponse(statusCode: number, code: string, message: string):
  * Handle OPTIONS requests for CORS
  */
 export const optionsHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+  void event; // Mark event as used to suppress unused variable warning
   return {
     statusCode: 200,
     headers: {

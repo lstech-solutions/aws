@@ -175,6 +175,7 @@ export class DocumentParserService {
     // const pdf = require('pdf-parse');
     // const data = await pdf(buffer);
     // return { textContent: data.text };
+    void buffer; // Mark buffer as used to suppress unused variable warning
     
     logger.warn('PDF parsing not fully implemented - using placeholder');
     
@@ -229,6 +230,7 @@ export class DocumentParserService {
   private static parseAudio(buffer: Buffer, fileName: string): ParsedDocument {
     // Audio files need to be transcribed using Amazon Transcribe
     // This returns a placeholder that will be updated after transcription
+    void buffer; // Mark buffer as used to suppress unused variable warning
     
     const extension = fileName.split('.').pop()?.toLowerCase();
     
@@ -247,7 +249,7 @@ export class DocumentParserService {
   /**
    * Determine document type from filename and MIME type
    */
-  private static determineDocumentType(fileName: string, mimeType?: string): DocumentType | null {
+  private static determineDocumentType(fileName: string, mimeType?: string): DocumentType | undefined {
     // First try MIME type
     if (mimeType && this.SUPPORTED_MIME_TYPES[mimeType as keyof typeof this.SUPPORTED_MIME_TYPES]) {
       return this.SUPPORTED_MIME_TYPES[mimeType as keyof typeof this.SUPPORTED_MIME_TYPES] as DocumentType;
@@ -272,7 +274,7 @@ export class DocumentParserService {
       case 'm4a':
         return 'audio';
       default:
-        return null;
+        return undefined;
     }
   }
 

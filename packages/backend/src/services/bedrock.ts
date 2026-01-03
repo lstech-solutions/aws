@@ -5,7 +5,6 @@
 import {
   BedrockRuntimeClient,
   InvokeModelCommand,
-  InvokeModelCommandInput,
 } from '@aws-sdk/client-bedrock-runtime';
 import { config } from '../utils/config';
 import { logger } from '../utils/logger';
