@@ -64,8 +64,8 @@ export default function Agents() {
             <div className="bg-white rounded-lg p-4 border border-blue-200">
               <h4 className="font-semibold text-gray-900 mb-2">Example Input:</h4>
               <p className="text-sm text-gray-600 mb-3">
-                "Email from client about urgent bug fix, GitHub issue #123 needs review, 
-                invoice from AWS due next week, meeting notes about new feature requirements..."
+                &quot;Email from client about urgent bug fix, GitHub issue #123 needs review, 
+                invoice from AWS due next week, meeting notes about new feature requirements...&quot;
               </p>
               <h4 className="font-semibold text-gray-900 mb-2">Generated Output:</h4>
               <p className="text-sm text-gray-600">
@@ -108,8 +108,8 @@ export default function Agents() {
             <div className="bg-white rounded-lg p-4 border border-green-200">
               <h4 className="font-semibold text-gray-900 mb-2">Example Input:</h4>
               <p className="text-sm text-gray-600 mb-3">
-                "Environmental NGO in Brazil, $50K budget, focus on forest conservation, 
-                team of 8, working with indigenous communities..."
+                &quot;Environmental NGO in Brazil, $50K budget, focus on forest conservation, 
+                team of 8, working with indigenous communities...&quot;
               </p>
               <h4 className="font-semibold text-gray-900 mb-2">Generated Output:</h4>
               <p className="text-sm text-gray-600">

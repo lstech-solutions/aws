@@ -1,0 +1,13 @@
+{
+  "rootPackageJson": "package.json",
+  "packages": [
+    "packages/versioning",
+    "packages/backend",
+    "apps/landing"
+  ],
+  "changelogFile": "CHANGELOG.md",
+  "conventionalCommits": true,
+  "syncDependencies": true,
+  "ignorePackages": [],
+  "extensions": []
+}

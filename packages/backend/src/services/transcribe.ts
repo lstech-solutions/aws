@@ -137,7 +137,7 @@ export class TranscribeService {
         });
 
         switch (status) {
-          case TranscriptionJobStatus.COMPLETED:
+          case TranscriptionJobStatus.COMPLETED: {
             // Job completed successfully
             const transcript = await this.downloadTranscript(job);
             return {
@@ -145,11 +145,13 @@ export class TranscribeService {
               jobStatus: status,
               outputUri: job.Transcript?.TranscriptFileUri,
             };
+          }
 
-          case TranscriptionJobStatus.FAILED:
+          case TranscriptionJobStatus.FAILED: {
             // Job failed
             const failureReason = job.FailureReason || 'Unknown error';
             throw new Error(`Transcription failed: ${failureReason}`);
+          }
 
           case TranscriptionJobStatus.IN_PROGRESS:
           case TranscriptionJobStatus.QUEUED:
@@ -324,7 +326,7 @@ export class TranscribeService {
    */
   private extractS3KeyFromUri(s3Uri: string): string {
     // Remove s3://bucket-name/ prefix
-    const parts = s3Uri.replace(/^s3:\/\/[^\/]+\//, '');
+    const parts = s3Uri.replace(/^s3:\/\/[^/]+\//, '');
     return parts;
   }
 

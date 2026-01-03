@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths: ['apps/landing/**']
+    tags: ['v*']
 
 jobs:
   deploy:

@@ -174,7 +174,7 @@ export default function Competition() {
             </div>
 
             <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-4 border border-blue-200">
-              <h4 className="font-semibold text-gray-900 mb-2">Why We'll Win</h4>
+              <h4 className="font-semibold text-gray-900 mb-2">Why We&apos;ll Win</h4>
               <ul className="text-sm text-gray-700 space-y-1">
                 <li>• Addresses real problems for underserved markets</li>
                 <li>• Innovative dual-agent architecture</li>

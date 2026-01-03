@@ -1,5 +1,6 @@
 import { Bot, Globe, Github, ExternalLink, Mail, Twitter } from 'lucide-react'
 import { getVersion } from '@ai-agent-platform/versioning'
+import { ThemeToggleWrapper } from './ThemeToggle'
 
 let versionInfo = 'v1.0.0'
 try {
@@ -10,7 +11,7 @@ try {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
       <div className="container-max section-padding">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
@@ -21,28 +22,28 @@ export default function Footer() {
               </div>
               <span className="text-xl font-bold">AI Agent Platform</span>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md">
+            <p className="text-gray-400 dark:text-gray-400 mb-6 max-w-md">
               Unified AI agent platform with Ops Copilot for solo founders and Grant Navigator 
               for NGOs. Built for the AWS 10,000 AIdeas Competition.
             </p>
             <div className="flex items-center gap-4">
               <a 
                 href="https://github.com" 
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a 
                 href="https://twitter.com" 
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a 
                 href="mailto:hello@ai-agent-platform.com" 
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
@@ -52,27 +53,27 @@ export default function Footer() {
 
           {/* Agents */}
           <div>
-            <h3 className="font-semibold text-white mb-4">AI Agents</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">AI Agents</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#ops-copilot" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                <a href="#ops-copilot" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2">
                   <Bot className="w-4 h-4" />
                   Ops Copilot
                 </a>
               </li>
               <li>
-                <a href="#grant-navigator" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                <a href="#grant-navigator" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2">
                   <Globe className="w-4 h-4" />
                   Grant Navigator
                 </a>
               </li>
               <li>
-                <a href="#demo" className="text-gray-400 hover:text-white transition-colors">
+                <a href="#demo" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                   Interactive Demo
                 </a>
               </li>
               <li>
-                <a href="#architecture" className="text-gray-400 hover:text-white transition-colors">
+                <a href="#architecture" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                   Architecture
                 </a>
               </li>
@@ -81,14 +82,14 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Resources</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Resources</h3>
             <ul className="space-y-3">
               <li>
                 <a 
                   href="https://aws.amazon.com/developer/community/10000-aideas/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2"
                 >
                   Competition Details
                   <ExternalLink className="w-3 h-3" />
@@ -99,19 +100,19 @@ export default function Footer() {
                   href="https://aws.amazon.com/bedrock/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2"
                 >
                   AWS Bedrock
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                   API Documentation
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                   Developer Guide
                 </a>
               </li>
@@ -120,8 +121,8 @@ export default function Footer() {
         </div>
 
         {/* AWS Services */}
-        <div className="border-t border-gray-800 pt-8 mb-8">
-          <h3 className="font-semibold text-white mb-4 text-center">Built with AWS Services</h3>
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-8 mb-8">
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-4 text-center">Built with AWS Services</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[
               'Amazon Bedrock',
@@ -133,7 +134,7 @@ export default function Footer() {
             ].map((service) => (
               <span 
                 key={service} 
-                className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-700"
+                className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-200 dark:border-gray-700"
               >
                 {service}
               </span>
@@ -142,25 +143,28 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-400 text-sm mb-4 md:mb-0 flex items-center gap-4">
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-4">
             <span>© 2024 AI Agent Platform. Built for AWS 10,000 AIdeas Competition.</span>
             {versionInfo && (
-              <span className="bg-gray-800 px-2 py-1 rounded text-xs border border-gray-700">
+              <span className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300">
                 {versionInfo}
               </span>
             )}
           </div>
           <div className="flex items-center gap-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="/privacy-policy" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="/terms-of-service" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
               Contact
             </a>
+            <div className="border-l border-gray-200 dark:border-gray-700 pl-6">
+              <ThemeToggleWrapper />
+            </div>
           </div>
         </div>
 
