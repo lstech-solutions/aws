@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { CONTACT_EMAIL, SECURITY_EMAIL } from '@/lib/contact-emails'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export default function Contact() {
 
     try {
       // Send email via mailto link with form data
-      const mailtoLink = `mailto:contact@lstech.solutions?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`
 
@@ -69,10 +70,10 @@ export default function Contact() {
               <h3 className="text-lg font-semibold mb-2">Email</h3>
               <p className="text-muted-foreground">
                 <a
-                  href="mailto:contact@lstech.solutions"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="hover:text-primary transition-colors"
                 >
-                  contact@lstech.solutions
+                  {CONTACT_EMAIL}
                 </a>
               </p>
             </motion.div>
@@ -125,7 +126,7 @@ export default function Contact() {
                 className="mb-6 p-4 bg-success/10 border border-success/20 rounded-lg text-success"
               >
                 ✓ Thank you for your message! Your email client will open to send the message to
-                contact@lstech.solutions
+                {` ${CONTACT_EMAIL}`}
               </motion.div>
             )}
 
@@ -169,7 +170,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-                    placeholder="your@email.com"
+                    placeholder="your@<company-domain>"
                   />
                 </div>
               </div>
@@ -238,7 +239,7 @@ export default function Contact() {
                 },
                 {
                   q: 'How can I report a security issue?',
-                  a: 'Please email security@lstech.solutions with details about the vulnerability.',
+                  a: `Please email ${SECURITY_EMAIL} with details about the vulnerability.`,
                 },
               ].map((faq, index) => (
                 <motion.div

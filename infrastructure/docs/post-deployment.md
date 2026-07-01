@@ -75,11 +75,11 @@ aws ses set-active-receipt-rule-set \
 
 ## 5. Verify Destination Emails
 
-For each destination email (e.g., admin@lstech.solutions):
+For each destination email (e.g., admin@<company-domain>):
 
 ```bash
 aws ses verify-email-identity \
-  --email-address admin@lstech.solutions \
+  --email-address admin@<company-domain> \
   --region us-east-1
 ```
 
@@ -117,7 +117,7 @@ Expected: HTTP 301/302 redirect to GitHub Pages
 ### Test Email Forwarding
 
 1. Send a test email to `admin@tláo.com`
-2. Check `admin@lstech.solutions` inbox
+2. Check `admin@<company-domain>` inbox
 3. You should receive the forwarded email
 
 ### Check Lambda Logs

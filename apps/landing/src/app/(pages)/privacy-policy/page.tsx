@@ -1,3 +1,5 @@
+import { PRIVACY_EMAIL } from '@/lib/contact-emails'
+
 export default function PrivacyPolicy() {
   return (
     <>
@@ -87,8 +89,8 @@ export default function PrivacyPolicy() {
             <div className="mt-4 p-4 bg-card rounded-lg border border-border">
               <p className="text-muted-foreground">
                 Email:{' '}
-                <a href="mailto:privacy@lstech.solutions" className="text-primary hover:underline">
-                  privacy@lstech.solutions
+                <a href={`mailto:${PRIVACY_EMAIL}`} className="text-primary hover:underline">
+                  {PRIVACY_EMAIL}
                 </a>
               </p>
             </div>

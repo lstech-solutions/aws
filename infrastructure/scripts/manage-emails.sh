@@ -45,9 +45,9 @@ show_help() {
     echo ""
     echo "Examples:"
     echo "  $0 list"
-    echo "  $0 add support@tláo.com support@lstech.solutions"
-    echo "  $0 remove support@tláo.com"
-    echo "  $0 test admin@tláo.com"
+    echo "  $0 add <source>@<domain> <destination>@<destination-domain>"
+    echo "  $0 remove <source>@<domain>"
+    echo "  $0 test <mailbox>@<domain>"
     echo "  $0 sync"
 }
 

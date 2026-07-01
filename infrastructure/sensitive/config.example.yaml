@@ -27,18 +27,18 @@ email:
   # Email forwarding mappings
   # Format: from_address: to_address
   forwarding:
-    "admin@xn--tlo-6ma.com": "admin@lstech.solutions"
-    "info@xn--tlo-6ma.com": "admin@lstech.solutions"
-    "support@xn--tlo-6ma.com": "support@lstech.solutions"
-    "contact@xn--tlo-6ma.com": "admin@lstech.solutions"
+    "admin@<source-domain>": "admin@<destination-domain>"
+    "info@<source-domain>": "info@<destination-domain>"
+    "support@<source-domain>": "support@<destination-domain>"
+    "contact@<source-domain>": "contact@<destination-domain>"
   
   # Email to use as sender for forwarded emails
-  from_email: "noreply@xn--tlo-6ma.com"
+  from_email: "noreply@<source-domain>"
   
   # Destination emails that need to be verified in SES
   verify_destinations:
-    - "admin@lstech.solutions"
-    - "support@lstech.solutions"
+    - "admin@<destination-domain>"
+    - "support@<destination-domain>"
 
 route53:
   # Route53 Hosted Zone ID for the domain
@@ -48,4 +48,4 @@ notifications:
   # SNS topic for infrastructure alerts (optional)
   sns_topic_arn: ""
   # Email for alerts
-  alert_email: "admin@lstech.solutions"
+  alert_email: "admin@<company-domain>"

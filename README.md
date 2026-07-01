@@ -11,7 +11,7 @@
 
 # TLÁO - Autonomous Agent Platform
 
-![Version](https://img.shields.io/badge/version-1.3.7-blue)
+![Version](https://img.shields.io/badge/version-1.3.22-blue)
 [![CI](https://github.com/lstech-solutions/aws-tlao/actions/workflows/ci.yml/badge.svg)](https://github.com/lstech-solutions/aws-tlao/actions/workflows/ci.yml)
 [![Deploy Landing](https://github.com/lstech-solutions/aws-tlao/actions/workflows/deploy-github-pages.yml/badge.svg)](https://github.com/lstech-solutions/aws-tlao/actions/workflows/deploy-github-pages.yml)
 [![Live Demo](https://img.shields.io/badge/demo-live-success)](https://xn--tlo-fla.com/)
@@ -211,29 +211,30 @@ Dashboard + Email Notifications
 - End-to-end encryption for sensitive data
 - GDPR-compliant data handling
 - Secure API authentication with Builder ID
-- Privacy Policy: [privacy@lstech.solutions](mailto:privacy@lstech.solutions)
-- Legal Inquiries: [legal@lstech.solutions](mailto:legal@lstech.solutions)
+- Privacy Policy: `privacy@<company-domain>`
+- Legal Inquiries: `legal@<company-domain>`
 
 ## 📞 Support & Contact
 
-- **General Inquiries**: [dev@lstech.solutions](mailto:dev@lstech.solutions)
-- **Support**: [support@tláo.com](mailto:support@xn--tlo-fla.com)
-- **Security Issues**: [security@lstech.solutions](mailto:security@lstech.solutions)
+- **General Inquiries**: `contact@<company-domain>`
+- **Support**: `support@<company-domain>`
+- **Security Issues**: `security@<company-domain>`
 - **Website**: [https://tlao.dev](https://tlao.dev)
 
 ## 📊 Version History
 
 See [CHANGELOG.md](./CHANGELOG.md) for detailed version history.
 
-Current Version: **1.3.7**
+Current Version: **1.3.22**
 
 ## 📚 Documentation
 
 - [VERSIONING.md](./VERSIONING.md) - Version management guide
 - [DEPLOYMENT.md](./DEPLOYMENT.md) - Deployment instructions
 - [CHANGELOG.md](./CHANGELOG.md) - Release notes
-- [ROADMAP.md](./ROADMAP.md) - Development roadmap
-- [OVH Mail Deployment Bundle](./packages/email/deployment/ovh/README.md) - standalone Stalwart + Caddy substrate for the OVH VPS path
+- [ROADMAP.md](./.versioning/ROADMAP.md) - Development roadmap
+- [OVH Mail Deployment Bundle](./packages/email/deployment/ovh/README.md) - overview and entry point for the OVH VPS mail substrate
+- [OVH Mail Docs](./packages/email/deployment/ovh/docs/README.md) - onboarding, mailbox access, and operational runbooks for the OVH bundle
 
 ## 🏆 AWS 10,000 AIdeas Challenge
 
@@ -248,5 +249,5 @@ This project is an official submission to the AWS 10,000 AIdeas Challenge.
 ---
 
 **Team**: LSTS
-**Contact**: dev@lstech.solutions
+**Contact**: `contact@<company-domain>`
 **Last Updated**: February 2026

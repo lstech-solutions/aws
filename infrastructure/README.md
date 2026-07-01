@@ -66,13 +66,13 @@ infrastructure/
 ### Add a new forwarding rule
 
 ```bash
-./scripts/manage-emails.sh add support@tláo.com support@lstech.solutions
+./scripts/manage-emails.sh add support@<source-domain> support@<destination-domain>
 ```
 
 ### Remove a forwarding rule
 
 ```bash
-./scripts/manage-emails.sh remove support@tláo.com
+./scripts/manage-emails.sh remove support@<source-domain>
 ```
 
 ### Sync config file to Lambda
@@ -117,4 +117,4 @@ Email → Route53 MX → SES → S3 + Lambda → SES → Destination
 
 ## Support
 
-For issues: dev@lstech.solutions
+For issues: dev@<company-domain>

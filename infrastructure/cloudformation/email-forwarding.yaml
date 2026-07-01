@@ -9,7 +9,7 @@ Parameters:
 
   ForwardingMappings:
     Type: String
-    Default: 'admin@xn--tlo-6ma.com=admin@lstech.solutions,info@xn--tlo-6ma.com=admin@lstech.solutions'
+    Default: 'admin@<source-domain>=admin@<destination-domain>,info@<source-domain>=info@<destination-domain>'
     Description: 'Comma-separated email forwarding mappings (from=to)'
 
 Resources:
@@ -154,7 +154,7 @@ Resources:
                           
                           # Create forwarded message
                           forward_msg = MIMEMultipart()
-                          forward_msg['From'] = os.environ.get('FROM_EMAIL', 'noreply@example.com')
+                          forward_msg['From'] = os.environ.get('FROM_EMAIL', 'noreply@<company-domain>')
                           forward_msg['To'] = forward_to
                           forward_msg['Subject'] = f"Fwd: {msg.get('Subject', 'No Subject')}"
                           
@@ -266,7 +266,7 @@ Outputs:
          - Request production access in SES Console
 
       5. Verify destination email:
-         - Verify admin@lstech.solutions in SES Console
+         - Verify admin@<company-domain> in SES Console
 
       6. Update forwarding mappings:
          - Update Lambda environment variable FORWARDING_MAPPINGS

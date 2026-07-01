@@ -13,7 +13,7 @@ describe('StalwartClient', () => {
   it('uses Basic auth when username and secret are provided separately', async () => {
     mockFetch.mockResolvedValue({
       ok: true,
-      json: async () => ({ data: { id: 3, emails: ['support@xn--tlo-fla.com'] } }),
+      json: async () => ({ data: { id: 3, emails: ['mailbox@example.test'] } }),
     })
 
     const client = new StalwartClient(
@@ -33,7 +33,7 @@ describe('StalwartClient', () => {
   it('uses Basic auth when legacy credentials are passed as username:secret', async () => {
     mockFetch.mockResolvedValue({
       ok: true,
-      json: async () => ({ data: { id: 3, emails: ['support@xn--tlo-fla.com'] } }),
+      json: async () => ({ data: { id: 3, emails: ['mailbox@example.test'] } }),
     })
 
     const client = new StalwartClient(
@@ -62,8 +62,8 @@ describe('StalwartClient', () => {
     )
 
     const principal = await client.createPrincipal({
-      email: 'support@xn--tlo-fla.com',
-      name: 'support@xn--tlo-fla.com',
+      email: 'mailbox@example.test',
+      name: 'mailbox@example.test',
       password: 'secret-pass',
     })
 
@@ -74,9 +74,9 @@ describe('StalwartClient', () => {
         method: 'POST',
         body: JSON.stringify({
           type: 'individual',
-          name: 'support@xn--tlo-fla.com',
-          description: 'support@xn--tlo-fla.com mailbox',
-          emails: ['support@xn--tlo-fla.com'],
+          name: 'mailbox@example.test',
+          description: 'mailbox@example.test mailbox',
+          emails: ['mailbox@example.test'],
           secrets: ['secret-pass'],
           roles: ['user'],
         }),

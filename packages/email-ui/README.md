@@ -18,22 +18,23 @@ Today that means a production-friendly fallback around [SnappyMail](https://snap
 - Generate one SnappyMail domain config per hosted mail domain.
 - Keep IMAP/SMTP pointed at the shared Stalwart host, currently `mail.xn--tlo-fla.com`.
 - Use full email addresses as the default Stalwart principal name for newly provisioned mailboxes. That is the cleanest cross-domain login contract for SnappyMail and for a future custom UI.
+- Keep the live domain and mailbox roster in the OVH bundle's gitignored private inventory instead of hard-coding it here.
 
-The current bootstrapped mailboxes on the live server predate this policy, so some of them still use legacy principal names such as `admin` or `cig-admin`. Those accounts remain valid, but future TLÁO-managed mailboxes should use the email address as the login identifier.
+The current bootstrapped mailboxes on the live server predate this policy, so some of them still use legacy principal names such as `admin`. Those accounts remain valid, but future TLÁO-managed mailboxes should use the email address as the login identifier.
 
 ## Package Contents
 
 - [`scripts/render-snappymail.mjs`](./scripts/render-snappymail.mjs): generates SnappyMail domain JSON files from environment variables.
 - [`snappymail/domain-template.json`](./snappymail/domain-template.json): upstream-aligned template shape for generated domain configs.
 - [`snappymail/image`](./snappymail/image): TLÁO-branded wrapper image context built on top of upstream SnappyMail.
-- OVH deployment integration lives in [`packages/email/deployment/ovh`](../email/deployment/ovh/README.md), where the compose stack, Caddy config, and host bootstrap scripts consume this package's conventions.
+- OVH deployment integration lives in [`packages/email/deployment/ovh`](../email/deployment/ovh/README.md), and the supporting operational docs live in [`packages/email/deployment/ovh/docs`](../email/deployment/ovh/docs/README.md), where the compose stack, Caddy config, and host bootstrap scripts consume this package's conventions.
 
 ## Local Rendering
 
 Generate domain configs locally:
 
 ```bash
-SNAPPYMAIL_ALLOWED_DOMAINS=xn--tlo-fla.com,cig.technology \
+SNAPPYMAIL_ALLOWED_DOMAINS=xn--tlo-fla.com \
 SNAPPYMAIL_IMAP_HOST=mail.xn--tlo-fla.com \
 SNAPPYMAIL_IMAP_PORT=993 \
 SNAPPYMAIL_IMAP_SECURITY=ssl \
@@ -45,6 +46,8 @@ pnpm --filter @tlao/email-ui run render:snappymail -- --output /tmp/tlao-snappym
 ```
 
 That produces SnappyMail domain configs under `/tmp/tlao-snappymail/_data_/_default_/domains`.
+
+If you are rendering for a live host, append the rest of the hosted domains from the private inventory file in the OVH bundle before running the generator.
 
 ## Branding Overlay
 

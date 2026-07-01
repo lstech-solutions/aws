@@ -1,3 +1,5 @@
+## [1.3.22](https://github.com/lstech-solutions/aws/compare/v1.3.21...v1.3.22) (2026-07-01)
+
 ## [1.3.21](https://github.com/lstech-solutions/aws/compare/v1.3.17...v1.3.21) (2026-03-22)
 
 ### Bug Fixes

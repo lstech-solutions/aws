@@ -27,9 +27,9 @@ describe('MailboxService', () => {
     const mailbox: Mailbox = {
       workspaceId: 'workspace-1',
       mailboxId: 'mailbox-1',
-      name: 'support',
-      emailAddress: 'support@xn--tlo-fla.com',
-      domain: 'xn--tlo-fla.com',
+      name: 'mailbox',
+      emailAddress: 'mailbox@example.test',
+      domain: 'example.test',
       createdAt: Date.now(),
       isActive: true,
       ingestionMode: 'operational',
@@ -48,8 +48,8 @@ describe('MailboxService', () => {
 
     expect(createPrincipal).toHaveBeenCalledWith(
       expect.objectContaining({
-        email: 'support@xn--tlo-fla.com',
-        name: 'support@xn--tlo-fla.com',
+        email: 'mailbox@example.test',
+        name: 'mailbox@example.test',
       })
     )
     expect(mockDynamoDBService.update).toHaveBeenCalledWith(
@@ -58,15 +58,15 @@ describe('MailboxService', () => {
       'SET stalwartPrincipalId = :principalId, stalwartPrincipalName = :principalName',
       {
         ':principalId': 'principal-123',
-        ':principalName': 'support@xn--tlo-fla.com',
+        ':principalName': 'mailbox@example.test',
       }
     )
     expect(result).toEqual(
       expect.objectContaining({
         success: true,
         credentials: expect.objectContaining({
-          emailAddress: 'support@xn--tlo-fla.com',
-          username: 'support@xn--tlo-fla.com',
+          emailAddress: 'mailbox@example.test',
+          username: 'mailbox@example.test',
           imapPort: 993,
           imapSecurity: 'TLS',
           smtpPort: 587,
@@ -95,9 +95,9 @@ describe('MailboxService', () => {
     mockDynamoDBService.get.mockResolvedValue({
       workspaceId: 'workspace-1',
       mailboxId: 'mailbox-1',
-      name: 'support',
-      emailAddress: 'support@xn--tlo-fla.com',
-      domain: 'xn--tlo-fla.com',
+      name: 'mailbox',
+      emailAddress: 'mailbox@example.test',
+      domain: 'example.test',
       createdAt: Date.now(),
       isActive: true,
       ingestionMode: 'operational',

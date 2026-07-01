@@ -111,6 +111,7 @@ apt-get install -y \
   swaks \
   ufw \
   unattended-upgrades \
+  awscli \
   zstd \
   apache2-utils
 systemctl enable --now cron unattended-upgrades
@@ -200,7 +201,9 @@ install_file "${BUNDLE_ROOT}/caddy/Caddyfile" "${TLAO_MAIL_ROOT}/caddy/Caddyfile
 install_file "${BUNDLE_ROOT}/scripts/backup.sh" "${TLAO_MAIL_ROOT}/scripts/backup.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/apply-snappymail-branding.sh" "${TLAO_MAIL_ROOT}/scripts/apply-snappymail-branding.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/generate-dkim.sh" "${TLAO_MAIL_ROOT}/scripts/generate-dkim.sh" 0750
+install_file "${BUNDLE_ROOT}/scripts/provision-mailbox.sh" "${TLAO_MAIL_ROOT}/scripts/provision-mailbox.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/render-snappymail.sh" "${TLAO_MAIL_ROOT}/scripts/render-snappymail.sh" 0750
+install_file "${BUNDLE_ROOT}/scripts/restore.sh" "${TLAO_MAIL_ROOT}/scripts/restore.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/sync-certs.sh" "${TLAO_MAIL_ROOT}/scripts/sync-certs.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/healthcheck.sh" "${TLAO_MAIL_ROOT}/scripts/healthcheck.sh" 0750
 install_tree "${EMAIL_UI_ROOT}/snappymail/image" "${TLAO_MAIL_ROOT}/email-ui/snappymail-image" 0644
@@ -230,7 +233,7 @@ if [[ ! -f "${TLAO_MAIL_ROOT}/stalwart/certs/mail.pem" || ! -f "${TLAO_MAIL_ROOT
   chmod 600 "${TLAO_MAIL_ROOT}/stalwart/certs/mail.key" "${TLAO_MAIL_ROOT}/stalwart/certs/mail.pem"
 fi
 
-log "Ensuring the primary DKIM key exists."
+log "Ensuring the DKIM keys exist."
 "${TLAO_MAIL_ROOT}/scripts/generate-dkim.sh"
 
 log "Rendering SnappyMail domain configuration."

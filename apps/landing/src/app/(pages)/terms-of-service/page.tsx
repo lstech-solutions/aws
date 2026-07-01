@@ -1,3 +1,5 @@
+import { LEGAL_EMAIL } from '@/lib/contact-emails'
+
 export default function TermsOfService() {
   return (
     <>
@@ -105,8 +107,8 @@ export default function TermsOfService() {
             <div className="mt-4 p-4 bg-card rounded-lg border border-border">
               <p className="text-muted-foreground">
                 Email:{' '}
-                <a href="mailto:legal@lstech.solutions" className="text-primary hover:underline">
-                  legal@lstech.solutions
+                <a href={`mailto:${LEGAL_EMAIL}`} className="text-primary hover:underline">
+                  {LEGAL_EMAIL}
                 </a>
               </p>
             </div>

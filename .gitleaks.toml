@@ -1,0 +1,20 @@
+title = "TLÁO Gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+paths = [
+  '''(^|/)\.git(/|$)''',
+  '''(^|/)\.turbo(/|$)''',
+  '''(^|/)\.sst(/|$)''',
+  '''(^|/)node_modules(/|$)''',
+  '''(^|/)dist(/|$)''',
+  '''(^|/)build(/|$)''',
+  '''(^|/)coverage(/|$)''',
+  '''(^|/)\.next(/|$)''',
+  '''(^|/)out(/|$)''',
+  '''(^|/)\.env$''',
+  '''(^|/)\.env\.(local|development|production|gcloud)$''',
+  '''(^|/)config/private[^/]*\.json$'''
+]

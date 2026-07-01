@@ -48,6 +48,41 @@ if [[ -n "${MAIL_ALT_DOMAIN:-}" ]]; then
   fi
 fi
 
+if [[ -f "${TLAO_MAIL_ROOT}/stalwart/dkim/cig-lat.rsa.key" ]]; then
+  echo 'Tertiary DKIM private key present for cig.lat (RSA)'
+else
+  echo 'Tertiary DKIM private key missing for cig.lat'
+  exit 1
+fi
+
+if [[ -f "${TLAO_MAIL_ROOT}/stalwart/dkim/a-quant.ed25519.key" ]]; then
+  echo 'DKIM private key present for a-quant.xyz'
+else
+  echo 'DKIM private key missing for a-quant.xyz'
+  exit 1
+fi
+
+if [[ -f "${TLAO_MAIL_ROOT}/stalwart/dkim/tiranicida.ed25519.key" ]]; then
+  echo 'DKIM private key present for tiranicida.ca'
+else
+  echo 'DKIM private key missing for tiranicida.ca'
+  exit 1
+fi
+
+if [[ -f "${TLAO_MAIL_ROOT}/stalwart/dkim/alternun.ed25519.key" ]]; then
+  echo 'DKIM private key present for alternun.org'
+else
+  echo 'DKIM private key missing for alternun.org'
+  exit 1
+fi
+
+if [[ -f "${TLAO_MAIL_ROOT}/stalwart/dkim/hashpass-club.ed25519.key" ]]; then
+  echo 'DKIM private key present for hashpass.club'
+else
+  echo 'DKIM private key missing for hashpass.club'
+  exit 1
+fi
+
 printf '\n== SnappyMail ==\n'
 if compose ps snappymail 2>/dev/null | grep -q 'Up'; then
   echo 'SnappyMail container is running'

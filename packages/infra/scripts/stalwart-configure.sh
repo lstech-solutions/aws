@@ -10,6 +10,9 @@ cp "$CONFIG" "${CONFIG}.bak"
 sed -i 's/^blob = "rocksdb"/blob = "s3"/' "$CONFIG"
 
 # Append S3 store, ACME, and TLS config
+CONTACT_LOCAL_PART="${CONTACT_LOCAL_PART:-postmaster}"
+CONTACT_DOMAIN="${CONTACT_DOMAIN:-xn--tlo-fla.com}"
+
 cat >> "$CONFIG" << 'TOML'
 
 [store."s3"]
@@ -21,7 +24,7 @@ prefix = "stalwart/"
 [acme."letsencrypt"]
 directory = "https://acme-v02.api.letsencrypt.org/directory"
 challenge = "tls-alpn-01"
-contact = ["postmaster@xn--tlo-fla.com"]
+contact = ["__CONTACT_ADDRESS__"]
 domains = ["mail.xn--tlo-fla.com"]
 default = true
 
@@ -29,6 +32,8 @@ default = true
 enable = true
 certificate = "acme"
 TOML
+
+sed -i "s/__CONTACT_ADDRESS__/${CONTACT_LOCAL_PART}@${CONTACT_DOMAIN}/" "$CONFIG"
 
 echo "Config patched. Restarting Stalwart..."
 docker compose -f /opt/stalwart-compose/docker-compose.yml restart

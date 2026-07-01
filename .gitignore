@@ -17,6 +17,10 @@ out/
 .env.local
 .env.production
 .env.development
+config/private-gcloud.json
+config/private.gcloud.json
+config/private-gcp-a-quant.json
+
 
 # IDE files
 .vscode/
@@ -57,6 +61,9 @@ infrastructure/**/*.pem
 infrastructure/**/*.key
 infrastructure/**/secrets.yaml
 infrastructure/**/config.local.yaml
+
+# Private mail inventory
+packages/email/deployment/ovh/private/*.local.json
 
 # Temporary files
 .tmp/
