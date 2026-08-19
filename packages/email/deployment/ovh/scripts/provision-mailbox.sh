@@ -69,6 +69,6 @@ principal_id="$(jq -r '.data' <<<"${response}")"
 printf 'Created mailbox principal %s with id %s\n' "${EMAIL_ADDRESS}" "${principal_id}"
 printf 'Username: %s\n' "${EMAIL_ADDRESS}"
 printf 'Password: %s\n' "${PASSWORD}"
-printf 'IMAP/SMTP host: %s\n' "${MAIL_FQDN:-mail.xn--tlo-fla.com}"
+printf 'IMAP/SMTP host: %s\n' "${MAIL_FQDN:-mail.example.invalid}"
 printf 'IMAP port: 993 (SSL/TLS)\n'
 printf 'SMTP port: 587 (STARTTLS)\n'

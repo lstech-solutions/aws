@@ -43,7 +43,7 @@
 	reverse_proxy snappymail:8888
 }
 
-autoconfig.xn--tlo-fla.com, autodiscover.xn--tlo-fla.com, autoconfig.cig.lat, autodiscover.cig.lat, autoconfig.tiranicida.ca, autodiscover.tiranicida.ca, autoconfig.alternun.org, autodiscover.alternun.org, autoconfig.hashpass.club, autodiscover.hashpass.club {
+{$AUTOCONFIG_HOSTS} {
 	log {
 		output file /var/log/caddy/access.log {
 			roll_size 25MiB

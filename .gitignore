@@ -14,6 +14,8 @@ out/
 
 # Environment files
 .env
+.env.*
+!.env.example
 .env.local
 .env.production
 .env.development
@@ -62,8 +64,13 @@ infrastructure/**/*.key
 infrastructure/**/secrets.yaml
 infrastructure/**/config.local.yaml
 
-# Private mail inventory
-packages/email/deployment/ovh/private/*.local.json
+# Private mail inventory and operational notes
+packages/email/deployment/ovh/private/*
+!packages/email/deployment/ovh/private/domains.local.example.json
+.agents/
+.tdd-state.json
+__pycache__/
+*.py[cod]
 
 # Temporary files
 .tmp/

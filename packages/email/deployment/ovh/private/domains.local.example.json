@@ -1,0 +1,11 @@
+{
+  "mailHost": "mail.example.invalid",
+  "webmailHost": "webmail.example.invalid",
+  "domains": [
+    {
+      "domain": "example.com",
+      "dkimAlgorithm": "ed25519",
+      "mailboxes": ["admin@example.com", "contact@example.com"]
+    }
+  ]
+}
