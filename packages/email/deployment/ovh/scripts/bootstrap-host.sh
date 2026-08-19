@@ -190,17 +190,22 @@ log "Creating target directories under ${TLAO_MAIL_ROOT}."
 install -d -m 0755 "${TLAO_MAIL_ROOT}"
 install -d -m 0755 "${TLAO_MAIL_ROOT}/stalwart/etc" "${TLAO_MAIL_ROOT}/stalwart/data" "${TLAO_MAIL_ROOT}/stalwart/logs" "${TLAO_MAIL_ROOT}/stalwart/certs" "${TLAO_MAIL_ROOT}/stalwart/dkim"
 install -d -m 0755 "${TLAO_MAIL_ROOT}/caddy/data" "${TLAO_MAIL_ROOT}/caddy/config" "${TLAO_MAIL_ROOT}/caddy/logs"
+install -d -m 0755 "${TLAO_MAIL_ROOT}/caddy/autoconfig/mail"
 install -d -m 0755 "${TLAO_MAIL_ROOT}/snappymail"
 install -d -m 0755 "${TLAO_MAIL_ROOT}/email-ui"
 install -d -m 0755 "${TLAO_MAIL_ROOT}/backups" "${TLAO_MAIL_ROOT}/scripts"
+install -d -m 0700 "${TLAO_MAIL_ROOT}/private"
 
 log "Installing deployment bundle files."
 install_file "${BUNDLE_ROOT}/docker-compose.yml" "${TLAO_MAIL_ROOT}/docker-compose.yml" 0644
-install_file "${BUNDLE_ROOT}/stalwart/config.toml" "${TLAO_MAIL_ROOT}/stalwart/etc/config.toml" 0644
+install_file "${BUNDLE_ROOT}/stalwart/config.toml" "${TLAO_MAIL_ROOT}/stalwart/etc/config.base.toml" 0644
 install_file "${BUNDLE_ROOT}/caddy/Caddyfile" "${TLAO_MAIL_ROOT}/caddy/Caddyfile" 0644
+install_file "${BUNDLE_ROOT}/caddy/autoconfig/mail/config-v1.1.xml" "${TLAO_MAIL_ROOT}/caddy/autoconfig/mail/config-v1.1.xml.template" 0644
 install_file "${BUNDLE_ROOT}/scripts/backup.sh" "${TLAO_MAIL_ROOT}/scripts/backup.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/apply-snappymail-branding.sh" "${TLAO_MAIL_ROOT}/scripts/apply-snappymail-branding.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/generate-dkim.sh" "${TLAO_MAIL_ROOT}/scripts/generate-dkim.sh" 0750
+install_file "${BUNDLE_ROOT}/scripts/render-stalwart-config.sh" "${TLAO_MAIL_ROOT}/scripts/render-stalwart-config.sh" 0750
+install_file "${BUNDLE_ROOT}/scripts/render-autoconfig.sh" "${TLAO_MAIL_ROOT}/scripts/render-autoconfig.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/provision-mailbox.sh" "${TLAO_MAIL_ROOT}/scripts/provision-mailbox.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/render-snappymail.sh" "${TLAO_MAIL_ROOT}/scripts/render-snappymail.sh" 0750
 install_file "${BUNDLE_ROOT}/scripts/restore.sh" "${TLAO_MAIL_ROOT}/scripts/restore.sh" 0750
@@ -234,9 +239,11 @@ if [[ ! -f "${TLAO_MAIL_ROOT}/stalwart/certs/mail.pem" || ! -f "${TLAO_MAIL_ROOT
 fi
 
 log "Ensuring the DKIM keys exist."
+"${TLAO_MAIL_ROOT}/scripts/render-stalwart-config.sh"
 "${TLAO_MAIL_ROOT}/scripts/generate-dkim.sh"
 
 log "Rendering SnappyMail domain configuration."
+"${TLAO_MAIL_ROOT}/scripts/render-autoconfig.sh"
 "${TLAO_MAIL_ROOT}/scripts/render-snappymail.sh"
 
 ensure_root_cron_line "17 3 * * * ${TLAO_MAIL_ROOT}/scripts/sync-certs.sh"

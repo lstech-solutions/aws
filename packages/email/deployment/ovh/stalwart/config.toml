@@ -85,78 +85,29 @@ expire = "10d"
 set-body-length = false
 report = false
 
-[signature."dkim_cig_lat"]
-private-key = "%{file:/opt/stalwart/dkim/cig-lat.rsa.key}%"
-domain = "cig.lat"
-selector = "%{env:DKIM_SELECTOR}%"
-headers = ["From", "To", "Cc", "Date", "Subject", "Message-ID", "Organization", "MIME-Version", "Content-Type", "In-Reply-To", "References", "List-Id", "User-Agent", "Thread-Topic", "Thread-Index"]
-algorithm = "rsa-sha256"
-canonicalization = "relaxed/relaxed"
-expire = "10d"
-set-body-length = false
-report = false
-
-[signature."dkim_a_quant"]
-private-key = "%{file:/opt/stalwart/dkim/a-quant.ed25519.key}%"
-domain = "a-quant.xyz"
-selector = "%{env:DKIM_SELECTOR}%"
-headers = ["From", "To", "Cc", "Date", "Subject", "Message-ID", "Organization", "MIME-Version", "Content-Type", "In-Reply-To", "References", "List-Id", "User-Agent", "Thread-Topic", "Thread-Index"]
-algorithm = "ed25519-sha256"
-canonicalization = "relaxed/relaxed"
-expire = "10d"
-set-body-length = false
-report = false
-
-[signature."dkim_tiranicida"]
-private-key = "%{file:/opt/stalwart/dkim/tiranicida.ed25519.key}%"
-domain = "tiranicida.ca"
-selector = "%{env:DKIM_SELECTOR}%"
-headers = ["From", "To", "Cc", "Date", "Subject", "Message-ID", "Organization", "MIME-Version", "Content-Type", "In-Reply-To", "References", "List-Id", "User-Agent", "Thread-Topic", "Thread-Index"]
-algorithm = "ed25519-sha256"
-canonicalization = "relaxed/relaxed"
-expire = "10d"
-set-body-length = false
-report = false
-
-[signature."dkim_alternun"]
-private-key = "%{file:/opt/stalwart/dkim/alternun.ed25519.key}%"
-domain = "alternun.org"
-selector = "%{env:DKIM_SELECTOR}%"
-headers = ["From", "To", "Cc", "Date", "Subject", "Message-ID", "Organization", "MIME-Version", "Content-Type", "In-Reply-To", "References", "List-Id", "User-Agent", "Thread-Topic", "Thread-Index"]
-algorithm = "ed25519-sha256"
-canonicalization = "relaxed/relaxed"
-expire = "10d"
-set-body-length = false
-report = false
-
-[signature."dkim_hashpass"]
-private-key = "%{file:/opt/stalwart/dkim/hashpass-club.ed25519.key}%"
-domain = "hashpass.club"
-selector = "%{env:DKIM_SELECTOR}%"
-headers = ["From", "To", "Cc", "Date", "Subject", "Message-ID", "Organization", "MIME-Version", "Content-Type", "In-Reply-To", "References", "List-Id", "User-Agent", "Thread-Topic", "Thread-Index"]
-algorithm = "ed25519-sha256"
-canonicalization = "relaxed/relaxed"
-expire = "10d"
-set-body-length = false
-report = false
+# <PRIVATE_DOMAIN_SIGNATURES>
 
 [auth.dkim]
 sign = [
   { if = "listener != 'smtp' && sender_domain = '%{env:MAIL_PRIMARY_DOMAIN}%'", then = "['dkim_primary']" },
-  { if = "listener != 'smtp' && sender_domain = 'cig.lat'", then = "['dkim_cig_lat']" },
-  { if = "listener != 'smtp' && sender_domain = 'a-quant.xyz'", then = "['dkim_a_quant']" },
-  { if = "listener != 'smtp' && sender_domain = 'tiranicida.ca'", then = "['dkim_tiranicida']" },
-  { if = "listener != 'smtp' && sender_domain = 'alternun.org'", then = "['dkim_alternun']" },
-  { if = "listener != 'smtp' && sender_domain = 'hashpass.club'", then = "['dkim_hashpass']" },
+  # <PRIVATE_DKIM_SIGN_RULES>
   { if = "listener != 'smtp' && sender_domain = '%{env:MAIL_ALT_DOMAIN}%'", then = "['dkim_secondary']" },
   { else = false }
 ]
 
 [session.rcpt]
-rewrite = [
-  { if = "matches('^(.+)@tláo\\.com$', rcpt)", then = "$1 + '@xn--tlo-fla.com'" },
+max-recipients = [
+  { if = "!is_empty(authenticated_as) & contains(split('%{env:SUPABASE_SMTP_ACCOUNT_LIST}%', ','), authenticated_as)", then = 25 },
+  { else = 100 }
+]
+catch-all = true
+relay = [
+  { if = "!is_empty(authenticated_as)", then = true },
   { else = false }
 ]
+
+[queue.limiter.inbound]
+supabase-submission = { match = "!is_empty(authenticated_as) & contains(split('%{env:SUPABASE_SMTP_ACCOUNT_LIST}%', ','), authenticated_as)", key = "authenticated_as", rate = "30/1m" }
 
 [server.auto-ban.auth]
 rate = "10/1h"
