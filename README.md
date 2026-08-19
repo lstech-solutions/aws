@@ -119,7 +119,7 @@ pnpm run build
 ### Release
 
 ```bash
-# Full monorepo patch release (bump + lint + build + changelog + push)
+# Full monorepo patch release (privacy gates + bump + lint + build + changelog + push)
 pnpm run release:patch
 
 # Release individual apps
@@ -211,6 +211,7 @@ Dashboard + Email Notifications
 - End-to-end encryption for sensitive data
 - GDPR-compliant data handling
 - Secure API authentication with Builder ID
+- Critical release privacy gate: [docs/RELEASE-PRIVACY.md](./docs/RELEASE-PRIVACY.md)
 - Privacy Policy: `privacy@<company-domain>`
 - Legal Inquiries: `legal@<company-domain>`
 
@@ -225,13 +226,14 @@ Dashboard + Email Notifications
 
 See [CHANGELOG.md](./CHANGELOG.md) for detailed version history.
 
-Current Version: **1.3.22**
+Current Version: **1.3.23**
 
 ## 📚 Documentation
 
 - [VERSIONING.md](./VERSIONING.md) - Version management guide
 - [DEPLOYMENT.md](./DEPLOYMENT.md) - Deployment instructions
 - [CHANGELOG.md](./CHANGELOG.md) - Release notes
+- [Release Privacy Guard](./docs/RELEASE-PRIVACY.md) - mandatory pre-commit and release checks
 - [ROADMAP.md](./.versioning/ROADMAP.md) - Development roadmap
 - [OVH Mail Deployment Bundle](./packages/email/deployment/ovh/README.md) - overview and entry point for the OVH VPS mail substrate
 - [OVH Mail Docs](./packages/email/deployment/ovh/docs/README.md) - onboarding, mailbox access, and operational runbooks for the OVH bundle

@@ -27,6 +27,7 @@ run_gitleaks() {
 
 case "${mode}" in
   --staged)
+    bash "${repo_root}/scripts/privacy-guard.sh" --staged
     run_gitleaks git --staged --redact --no-banner --verbose
     ;;
   --repo|--all|"")
