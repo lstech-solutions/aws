@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import shutil
 import subprocess
 import tempfile
@@ -10,20 +11,28 @@ GUARD_SOURCE = SOURCE_ROOT / "scripts" / "privacy-guard.sh"
 
 
 class PrivacyGuardStagedTests(unittest.TestCase):
+    def setUp(self):
+        # Git hooks export repository-local variables. A cwd alone does not
+        # isolate subprocesses from the parent repository or its staging index.
+        self.git_env = {
+            key: value for key, value in os.environ.items()
+            if not key.startswith("GIT_")
+        }
+
     def make_repo(self):
         temporary_directory = tempfile.TemporaryDirectory()
         self.addCleanup(temporary_directory.cleanup)
         repository = Path(temporary_directory.name)
 
-        subprocess.run(["git", "init", "-q"], cwd=repository, check=True)
+        subprocess.run(["git", "init", "-q"], cwd=repository, env=self.git_env, check=True)
         subprocess.run(
             ["git", "config", "user.email", "test@example.invalid"],
-            cwd=repository,
+            cwd=repository, env=self.git_env,
             check=True,
         )
         subprocess.run(
             ["git", "config", "user.name", "Privacy Guard Test"],
-            cwd=repository,
+            cwd=repository, env=self.git_env,
             check=True,
         )
 
@@ -36,12 +45,12 @@ class PrivacyGuardStagedTests(unittest.TestCase):
         file_path = repository / relative_path
         file_path.parent.mkdir(parents=True, exist_ok=True)
         file_path.write_text(content, encoding="utf-8")
-        subprocess.run(["git", "add", "--", str(relative_path)], cwd=repository, check=True)
+        subprocess.run(["git", "add", "--", str(relative_path)], cwd=repository, env=self.git_env, check=True)
 
     def run_guard(self, repository):
         return subprocess.run(
             ["bash", "scripts/privacy-guard.sh", "--staged"],
-            cwd=repository,
+            cwd=repository, env=self.git_env,
             capture_output=True,
             text=True,
             check=False,

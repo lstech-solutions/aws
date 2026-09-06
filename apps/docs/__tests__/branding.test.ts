@@ -22,12 +22,12 @@ describe('Branding Configuration', () => {
       expect(configContent).toContain("url: process.env.SITE_URL || 'https://xn--tlo-fla.com'")
     })
 
-    it('should have baseUrl set to root', () => {
+    it('should default to the documentation subdirectory', () => {
       // Validates: Requirement 1.5
       const configPath = path.join(__dirname, '..', 'docusaurus.config.ts')
       const configContent = fs.readFileSync(configPath, 'utf-8')
 
-      expect(configContent).toContain("baseUrl: process.env.BASE_URL || '/'")
+      expect(configContent).toContain("baseUrl: process.env.BASE_URL || '/documentation/'")
     })
   })
 

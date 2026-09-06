@@ -1,13 +1,14 @@
 import { themes as prismThemes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
+import { version } from './package.json'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
   title: 'TLÁO Documentation',
   tagline: 'Tactical Layer for Action & Outcomes',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -20,12 +21,12 @@ const config: Config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   // For custom domain, it can be '/'
-  baseUrl: process.env.BASE_URL || '/',
+  baseUrl: process.env.BASE_URL || '/documentation/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'tlao', // Usually your GitHub org/user name.
-  projectName: 'tlao-docs', // Usually your repo name.
+  organizationName: 'lstech-solutions', // Usually your GitHub org/user name.
+  projectName: 'aws-tlao', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -44,7 +45,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/tlao/tlao-docs/tree/main/apps/docs/',
+          editUrl: 'https://github.com/lstech-solutions/aws-tlao/tree/main/apps/docs/',
         },
         blog: false,
         theme: {
@@ -54,8 +55,10 @@ const config: Config = {
     ],
   ],
 
+  customFields: { version },
+
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/logo.svg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -66,14 +69,15 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        { to: '/mail/', label: 'Mail guides', position: 'left' },
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Documentation',
+          label: 'All guides',
         },
         {
-          href: 'https://github.com/tlao/tlao-docs',
+          href: 'https://github.com/lstech-solutions/aws-tlao',
           label: 'GitHub',
           position: 'right',
         },

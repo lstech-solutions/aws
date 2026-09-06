@@ -1,3 +1,17 @@
+## [1.3.24](https://github.com/lstech-solutions/aws-tlao/compare/v1.3.23...v1.3.24) (2026-09-06)
+
+### Bug Fixes
+
+- **release:** enforce privacy gates ([9008629](https://github.com/lstech-solutions/aws-tlao/commit/90086295f7952eacb761fc8ef8a01af6f6904b37))
+
+### Documentation and fixes
+
+- Isolate privacy-test Git subprocesses from hook environments so release checks cannot alter the parent staging index.
+
+- Add TLÁO Mail guides for webmail, SMTP/IMAP, password changes, recovery, and troubleshooting.
+- Refresh documentation navigation, reading contrast, homepage, and footer; display the current release version.
+- Restore the landing page and `/documentation/` with a single GitHub Pages deployment, preventing the docs-only workflow from overwriting the site.
+
 ## [1.3.23](https://github.com/lstech-solutions/aws-tlao/compare/v1.3.22...v1.3.23) (2026-08-19)
 
 ## [1.3.22](https://github.com/lstech-solutions/aws/compare/v1.3.21...v1.3.22) (2026-07-01)

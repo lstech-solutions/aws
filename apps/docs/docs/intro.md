@@ -1,46 +1,41 @@
 ---
 sidebar_position: 1
+hide_title: true
 slug: /
+title: TLÁO documentation
+description: Practical guides to TLÁO Mail, account access, and autonomous workflows.
 ---
 
-# Welcome to TLÁO
+import Link from '@docusaurus/Link';
 
-**TLÁO** (Tactical Layer for Action & Outcomes) is a middleware system that sits between the chaos of unstructured reality and the precision of execution systems.
+<div className="docs-hero">
+<p className="docs-eyebrow">TLÁO / FIELD GUIDE</p>
+<h1>From your first sign-in<br />to the next outcome.</h1>
+<p>Set up your mailbox, connect your tools, and understand how TLÁO turns incoming information into action.</p>
+<Link className="button button--primary" to="/mail/">Start with TLÁO Mail →</Link>
+</div>
 
-## What is TLÁO?
+## What do you need to do?
 
-TLÁO transforms messy, real-world inputs into concrete, actionable outcomes. It bridges the gap between:
+<div className="docs-guide-grid">
+<Link className="docs-guide" to="/mail/webmail"><span className="docs-guide-number">01 / BROWSER</span><h3>Open your mailbox</h3><p>Sign in, write your first message, and find your account settings.</p><span>Webmail guide →</span></Link>
+<Link className="docs-guide" to="/mail/smtp-imap"><span className="docs-guide-number">02 / CONNECTIONS</span><h3>Connect a mail app</h3><p>Use SMTP and IMAP with the right ports, encryption, and login.</p><span>Connection settings →</span></Link>
+<Link className="docs-guide" to="/mail/passwords"><span className="docs-guide-number">03 / ACCOUNT ACCESS</span><h3>Manage your password</h3><p>Change a known password or recover access with a one-time link.</p><span>Password help →</span></Link>
+<Link className="docs-guide" to="/custom-agents/introduction"><span className="docs-guide-number">04 / WORKFLOWS</span><h3>Explore custom agents</h3><p>Understand agent configuration, tools, and practical examples.</p><span>Agent documentation →</span></Link>
+</div>
 
-- **Unstructured Reality**: Emails, PDFs, meeting notes, invoices, transcripts, grant pages
-- **Execution Systems**: GitHub issues, calendars, Notion/Jira, proposal documents, budgets, deployments
+## Understand the platform
 
-## Why TLÁO?
+TLÁO means **Tactical Layer for Action & Outcomes**. It connects unstructured
+inputs—such as email, documents, and meeting notes—with execution tools and
+concrete next steps.
 
-In modern work environments, information comes from everywhere in every format. TLÁO provides a unified layer that:
+Start with [why a layer matters](concepts/why-layer.md),
+[what makes it tactical](concepts/why-tactical.md), and
+[how actions become outcomes](concepts/action-outcomes.md).
 
-1. **Ingests** diverse inputs without requiring standardization
-2. **Understands** context and extracts structured information
-3. **Reasons** tactically about what needs to happen next
-4. **Executes** by interfacing with your existing tools
-5. **Orchestrates** the entire process with full audit trails
-
-## Core Concepts
-
-To understand TLÁO, you need to grasp three fundamental concepts:
-
-- **[Why "Layer"?](concepts/why-layer)** - TLÁO sits between unstructured inputs and structured outputs
-- **[Why "Tactical"?](concepts/why-tactical)** - Focus on short-horizon, concrete, actionable steps
-- **[Action & Outcomes](concepts/action-outcomes)** - Tasks, owners, deadlines, dependencies, and results
-
-## Quick Start
-
-Ready to dive in? Start with:
-
-1. **[Core Concepts](concepts/why-layer)** - Understand the fundamentals
-
-## TLÁO Agents
-
-TLÁO includes specialized agents for common workflows:
-
-- **TLÁO Plan Agent**: Turns chaos into next actions, priorities, and blockers
-- **TLÁO Grant Agent**: Turns uncertainty into eligibility checks and proposal drafts
+:::info Your mailbox settings
+Mail guides use placeholders such as `<mail-host>`, `<webmail-host>`, and
+`user@<domain>`. Replace them with the details provided by your mailbox
+administrator. Different hosted domains can share the same mail server.
+:::

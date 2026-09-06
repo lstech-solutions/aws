@@ -36,6 +36,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Validate documentation
+        run: |
+          pnpm --filter @tlao/docs run lint
+          pnpm --filter @tlao/docs run type-check
+          pnpm --filter @tlao/docs exec jest --runInBand
+
       - name: Build landing page
         run: pnpm --filter @tlao/landing run build
 
@@ -45,9 +51,14 @@ jobs:
       - name: Combine builds
         run: |
           mkdir -p combined-build
-          cp -r apps/landing/out/* combined-build/
+          cp -a apps/landing/out/. combined-build/
           mkdir -p combined-build/documentation
-          cp -r apps/docs/build/* combined-build/documentation/
+          cp -a apps/docs/build/. combined-build/documentation/
+          touch combined-build/.nojekyll
+          test -s combined-build/index.html
+          test -s combined-build/documentation/index.html
+          test -s combined-build/documentation/mail/smtp-imap/index.html
+          test -s combined-build/documentation/mail/passwords/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

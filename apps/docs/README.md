@@ -1,100 +1,41 @@
-# TLÁO Documentation Site
+# TLÁO documentation
 
-This is the documentation site for TLÁO (Tactical Layer for Action & Outcomes), built with Docusaurus 3.x.
+The public documentation lives at `https://xn--tlo-fla.com/documentation/`.
+The landing page and docs are published together by
+[the GitHub Pages workflow](../../.github/workflows/deploy-github-pages.yml).
+Do not deploy a docs-only artifact to this repository's Pages site: it would
+replace the landing page.
 
-## Getting Started
+## Content
 
-### Prerequisites
+- `docs/intro.md`: documentation home.
+- `docs/mail/`: browser access, SMTP/IMAP settings, password recovery, and troubleshooting.
+- `docs/concepts/` and `docs/custom-agents/`: platform and agent guides.
+- `sidebars.ts`: supported navigation. Docusaurus starter examples are not part of the guide navigation.
 
-- Node.js 22.22.0
-- pnpm >= 8.0.0
+Keep mail hostnames and mailbox addresses as placeholders. Operator inventory,
+credentials, and account-owner details do not belong in public documentation.
 
-### Installation
-
-From the monorepo root:
-
-```bash
-pnpm install
-```
-
-### Development
-
-Start the development server:
+## Preview and validate
 
 ```bash
-# From the monorepo root
 pnpm --filter @tlao/docs dev
-
-# Or from this directory
-pnpm dev
+pnpm --filter @tlao/docs run lint
+pnpm --filter @tlao/docs run type-check
+pnpm --filter @tlao/docs exec jest --runInBand
+pnpm --filter @tlao/docs run build:github
 ```
 
-The site will be available at http://localhost:3000
+The default base path is `/documentation/`, matching production. The footer
+reads its version from the package metadata, synchronized with the root and
+landing packages by the repository's versioning tool.
 
-### Building
+## Publish
 
-Build the static site:
-
-```bash
-# From the monorepo root
-pnpm --filter @tlao/docs build
-
-# Or from this directory
-pnpm build
-```
-
-The static files will be generated in the `build/` directory.
-
-### Testing
-
-Run tests:
-
-```bash
-pnpm test
-```
-
-Run type checking:
-
-```bash
-pnpm type-check
-```
-
-Run linting:
-
-```bash
-pnpm lint
-```
-
-## Project Structure
-
-```
-apps/docs/
-├── docs/                   # Documentation content (Markdown/MDX)
-├── src/                    # Custom React components and pages
-│   ├── components/         # Reusable React components
-│   └── css/               # Custom styles
-├── static/                # Static assets (images, files)
-├── docusaurus.config.ts   # Docusaurus configuration
-├── sidebars.ts            # Sidebar navigation structure
-└── package.json
-```
-
-## Configuration
-
-The main configuration is in `docusaurus.config.ts`. Key settings:
-
-- **URL**: https://docs.tláo.com
-- **Base URL**: /
-- **Route Base Path**: / (docs served at root)
-- **Locales**: English (default)
-
-## Deployment
-
-The site is configured to deploy to Vercel. The build command and output directory are:
-
-- Build command: `pnpm build`
-- Output directory: `build/`
-
-## Documentation
-
-For more information about Docusaurus, see the [official documentation](https://docusaurus.io/).
+Prepare a reviewed patch, update the synchronized versions and changelog, run
+the release privacy checks and both site builds, then push the release commit
+to `main`. The Pages workflow validates the docs and publishes one artifact
+containing the landing page at `/` and docs at `/documentation/`.
+Tag that same commit and create the GitHub release. Confirm that the Pages run
+succeeds and both public routes work; the tag does not trigger another competing
+Pages deployment.
