@@ -59,6 +59,9 @@ jobs:
           test -s combined-build/documentation/index.html
           test -s combined-build/documentation/mail/smtp-imap/index.html
           test -s combined-build/documentation/mail/passwords/index.html
+          test -s combined-build/documentation/es/index.html
+          test -s combined-build/documentation/es/mail/smtp-imap/index.html
+          test -s combined-build/documentation/es/mail/passwords/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

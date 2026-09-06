@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "TLÁO",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logotipo de TLÁO",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Mail guides": {
+    "message": "Guías de correo",
+    "description": "Navbar item with label Mail guides"
+  },
+  "item.label.All guides": {
+    "message": "Todas las guías",
+    "description": "Navbar item with label All guides"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

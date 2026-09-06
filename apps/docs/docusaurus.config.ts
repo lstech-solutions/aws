@@ -35,7 +35,11 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es'],
+    localeConfigs: {
+      en: { label: 'English', htmlLang: 'en' },
+      es: { label: 'Español', htmlLang: 'es' },
+    },
   },
 
   presets: [
@@ -46,6 +50,7 @@ const config: Config = {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/lstech-solutions/aws-tlao/tree/main/apps/docs/',
+          editLocalizedFiles: true,
         },
         blog: false,
         theme: {
@@ -69,6 +74,7 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        { type: 'localeDropdown', position: 'right' },
         { to: '/mail/', label: 'Mail guides', position: 'left' },
         {
           type: 'docSidebar',
@@ -93,6 +99,11 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+}
+
+if (process.env.DOCUSAURUS_CURRENT_LOCALE === 'es') {
+  config.title = 'Documentación de TLÁO'
+  config.tagline = 'Capa táctica para acciones y resultados'
 }
 
 export default config

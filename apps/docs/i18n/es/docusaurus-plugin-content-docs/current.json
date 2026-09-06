@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Actual",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.TLÁO Mail": {
+    "message": "TLÁO Mail",
+    "description": "The label for category 'TLÁO Mail' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Platform concepts": {
+    "message": "Conceptos de la plataforma",
+    "description": "The label for category 'Platform concepts' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Custom agents": {
+    "message": "Agentes personalizados",
+    "description": "The label for category 'Custom agents' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.doc.Start here": {
+    "message": "Empieza aquí",
+    "description": "The label for the doc item 'Start here' in sidebar 'tutorialSidebar', linking to the doc intro"
+  }
+}

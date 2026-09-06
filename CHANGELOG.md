@@ -1,3 +1,11 @@
+## [1.3.26](https://github.com/lstech-solutions/aws-tlao/compare/v1.3.25...v1.3.26) (2026-09-06)
+
+### Documentation
+
+- Add complete Spanish translations for all 22 published documentation pages, including mail, platform concepts, agent guides, and tutorials.
+- Configure English and Spanish locales with a desktop and mobile language selector, translated navigation and footer, and localized page metadata.
+- Validate translation coverage and both locale outputs in the GitHub Pages deployment.
+
 ## [1.3.25](https://github.com/lstech-solutions/aws-tlao/compare/v1.3.24...v1.3.25) (2026-09-06)
 
 ### Documentation
