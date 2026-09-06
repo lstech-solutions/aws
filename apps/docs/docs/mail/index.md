@@ -13,13 +13,13 @@ Use **webmail** for access in a browser, or connect an email application using
 
 Have these details from your mailbox administrator:
 
-| Detail          | Example placeholder             | What it is for                          |
-| --------------- | ------------------------------- | --------------------------------------- |
-| Email address   | `user@<domain>`                 | Sending and receiving messages          |
-| Mailbox login   | Usually your full email address | Signing in and authenticating mail apps |
-| Webmail address | `https://<webmail-host>`        | Browser access                          |
-| Mail server     | `<mail-host>`                   | Incoming IMAP and outgoing SMTP         |
-| Password        | Provided privately              | Your first sign-in                      |
+| Detail          | Value or example                                 | What it is for                          |
+| --------------- | ------------------------------------------------ | --------------------------------------- |
+| Email address   | `user@<domain>`                                  | Sending and receiving messages          |
+| Mailbox login   | Usually your full email address                  | Signing in and authenticating mail apps |
+| Webmail address | [Open webmail](https://webmail.xn--tlo-fla.com/) | Browser access                          |
+| Mail server     | `mail.xn--tlo-fla.com`                           | Incoming IMAP and outgoing SMTP         |
+| Password        | Provided privately                               | Your first sign-in                      |
 
 Older mailboxes may have a short login name. If yours does, use the login your
 administrator issued; do not assume the email address is also the login.

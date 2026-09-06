@@ -35,7 +35,7 @@ Start with [why a layer matters](concepts/why-layer.md),
 [how actions become outcomes](concepts/action-outcomes.md).
 
 :::info Your mailbox settings
-Mail guides use placeholders such as `<mail-host>`, `<webmail-host>`, and
-`user@<domain>`. Replace them with the details provided by your mailbox
-administrator. Different hosted domains can share the same mail server.
+The [SMTP and IMAP guide](mail/smtp-imap.md) lists the actual shared server,
+ports, and encryption settings. Replace `user@<domain>` with your own mailbox
+login. Different hosted domains can share the same mail server.
 :::

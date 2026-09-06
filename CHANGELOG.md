@@ -1,3 +1,11 @@
+## [1.3.25](https://github.com/lstech-solutions/aws-tlao/compare/v1.3.24...v1.3.25) (2026-09-06)
+
+### Documentation
+
+- Publish verified SMTP and IMAP hostnames, ports, encryption settings, and application connection URIs.
+- Add current screenshots of webmail login, password change, and administrator-assisted recovery.
+- Expand step-by-step mailbox setup, sending and receiving checks, and browser instructions.
+
 ## [1.3.24](https://github.com/lstech-solutions/aws-tlao/compare/v1.3.23...v1.3.24) (2026-09-06)
 
 ### Bug Fixes

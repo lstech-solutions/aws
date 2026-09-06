@@ -6,14 +6,20 @@ description: Configure incoming IMAP and authenticated outgoing SMTP for TLÁO M
 # Connect your email application
 
 Choose **Other account**, **Manual setup**, or **IMAP** in your mail app.
-Enter the server details issued by your administrator.
+Use the verified TLÁO server settings below and the mailbox login issued by your administrator.
 
-## Connection settings
+## 1. Have your mailbox details ready
+
+Keep your mailbox login and password available. The login is usually your full
+email address; use an issued legacy login if your administrator provided one.
+If two-factor authentication is enabled, obtain an app password before setup.
+
+## 2. Enter the connection settings
 
 | Setting             | Incoming mail                           | Outgoing mail                     |
 | ------------------- | --------------------------------------- | --------------------------------- |
 | Protocol            | IMAP                                    | SMTP                              |
-| Server hostname     | `<mail-host>`                           | `<mail-host>`                     |
+| Server hostname     | `mail.xn--tlo-fla.com`                  | `mail.xn--tlo-fla.com`            |
 | Recommended port    | **993**                                 | **587**                           |
 | Connection security | **SSL/TLS**                             | **STARTTLS**                      |
 | Authentication      | Password                                | Password; authentication required |
@@ -25,22 +31,49 @@ connection. Use it when your app supports implicit TLS instead of STARTTLS.
 Do not pair port 587 with implicit SSL/TLS, or port 465 with STARTTLS.
 
 :::tip Which hostname?
-Use `<mail-host>`, not the webmail URL. Enter only the hostname in the server
-field, without `https://` or a path. Use the exact issued hostname so it matches
-the server certificate.
+Use `mail.xn--tlo-fla.com`, not the webmail URL. Enter only the hostname in the server
+field, without `https://` or a path. The ASCII spelling above works in clients
+that do not support accented domain names.
 :::
 
-## Set up a desktop or mobile client
+## 3. Add the account in your mail app
 
 1. Add a new mail account and enter your display name and email address.
 2. Select manual IMAP configuration if automatic discovery does not fill in the issued settings.
-3. Set incoming mail to port **993**, with **SSL/TLS**.
-4. Set outgoing mail to port **587**, with **STARTTLS**, and enable authentication.
+3. Set the incoming server to **mail.xn--tlo-fla.com**, port **993**, with **SSL/TLS**.
+4. Set the outgoing server to **mail.xn--tlo-fla.com**, port **587**, with **STARTTLS**, and enable authentication.
 5. Enter the mailbox login separately for both servers; some apps leave the SMTP username empty.
 6. Save the account. Send a test message to an address you control and reply to confirm incoming mail.
 
 These settings apply to clients such as Thunderbird, Apple Mail, and Outlook.
 The names of the setup fields vary by application.
+
+### If your application asks for a connection URL
+
+Use these only in software that accepts mail connection URIs:
+
+| Service          | Connection URI                     | Required security                      |
+| ---------------- | ---------------------------------- | -------------------------------------- |
+| Incoming IMAP    | `imaps://mail.xn--tlo-fla.com:993` | SSL/TLS                                |
+| Outgoing SMTP    | `smtp://mail.xn--tlo-fla.com:587`  | Require STARTTLS before authentication |
+| Alternative SMTP | `smtps://mail.xn--tlo-fla.com:465` | SSL/TLS                                |
+
+These are mail endpoints, not pages to open in your browser. A `smtp://` URI
+alone does not require encryption in every library: explicitly require STARTTLS.
+Keep usernames and passwords in separate credential fields or a secret store.
+
+## 4. Verify sending and receiving
+
+1. Wait for the Inbox to synchronize. Existing messages should appear if the mailbox has any.
+2. Send a short test message to another mailbox you control.
+3. Confirm that it arrives there, then reply from that mailbox.
+4. Confirm that the reply appears in your TLÁO Inbox.
+5. If receiving works but sending fails, reopen the outgoing server settings and
+   check SMTP authentication, username, port, and encryption independently.
+
+Never accept an unexpected certificate warning. Confirm the hostname and your
+device clock, then ask your administrator if the warning remains.
+See [connection troubleshooting](troubleshooting.md) for the next checks.
 
 ## Two-factor authentication
 
@@ -57,7 +90,7 @@ client. Use the supported app-password setup instead.
 Configure these values in the application's private environment or secret store:
 
 ```text
-SMTP_HOST=<mail-host>
+SMTP_HOST=mail.xn--tlo-fla.com
 SMTP_PORT=587
 SMTP_SECURITY=starttls
 SMTP_AUTH=true

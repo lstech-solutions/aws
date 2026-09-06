@@ -13,8 +13,10 @@ replace the landing page.
 - `docs/concepts/` and `docs/custom-agents/`: platform and agent guides.
 - `sidebars.ts`: supported navigation. Docusaurus starter examples are not part of the guide navigation.
 
-Keep mail hostnames and mailbox addresses as placeholders. Operator inventory,
-credentials, and account-owner details do not belong in public documentation.
+The owner-approved public mail and webmail hostnames appear in the user guides.
+Keep mailbox addresses as placeholders. Operator inventory, credentials, and
+account-owner details do not belong in public documentation. Screenshots must
+show public screens with empty fields and no account or reset-token data.
 
 ## Preview and validate
 

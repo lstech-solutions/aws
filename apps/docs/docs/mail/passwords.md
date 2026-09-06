@@ -7,17 +7,21 @@ description: Change a mailbox password or recover access with an administrator-i
 
 The account portal is on the same host as webmail:
 
-```text
-https://<webmail-host>/account/
-```
+[Open the password portal](https://webmail.xn--tlo-fla.com/account/).
 
 ## Change a password you know
+
+![Password change form showing the mailbox login, current password, optional authenticator code, and new password fields](/img/mail/change-password.png)
+
+_The complete password change form. All account fields are empty._
 
 1. Choose **Change password** on the webmail login page or in Settings.
 2. Enter your exact mailbox login and **current main password**.
 3. If you use two-factor authentication, enter your current six-digit authenticator code.
-4. Enter the new password twice and choose **Update password**.
-5. Sign in to webmail with the new password. Update mail apps that store the main password.
+   Otherwise, leave that field empty.
+4. Enter the new password in **New password** and repeat it exactly in **Confirm new password**.
+5. Choose **Update password** once and wait for the result. Correct any validation message before retrying.
+6. Sign in to webmail with the new password. Update mail apps that store the main password.
 
 Use **15–128 characters**. A long, unique passphrase is a good choice.
 App passwords cannot be used to change the main password.
@@ -30,6 +34,10 @@ sessions and app passwords as well.
 ## Recover a forgotten password
 
 Choose **Forgot password?** on the login page.
+
+![Forgot password screen explaining administrator verification and a private reset link valid for 30 minutes](/img/mail/forgot-password.png)
+
+_Recovery starts with your mailbox administrator; this screen does not send an email._
 
 1. Contact your mailbox administrator through your usual trusted support channel.
 2. The administrator verifies that you own the mailbox.
